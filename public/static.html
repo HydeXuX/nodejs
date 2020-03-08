@@ -3,20 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hello World Page</title>
+    <title>Postal Rate Calculator</title>
 </head>
 
 <body>
     <form action="/math" method="GET">
-        <h1>Wanna do some math kid?</h1>
-        <select name="type">
-            <option value="1">+</option>
-            <option value="2">-</option>
-            <option value="3">*</option>
-            <option value="4">/</option>
+        <h1>Postal Rate Calculator</h1>
+        <label for="weight">Weight of the item:</label>
+
+        <input type="text" id="weight" name="weight">oz.<br><br>
+
+        <label for="mail">Type of mail:</label>
+
+        <select id="mail" name="mail">
+            <option value="0">Letters (Stamped)</option>
+            <option value="1">Letters (Metered)</option>
+            <option value="2">Large Envelopes (Flats)</option>
+            <option value="3">First-Class Package Service—Retail</option>
         </select>
-        <input name="num1"></input>
-        <input name="num2"></input>
+        <br><br>
         <button type="submit">submit</button>
     </form>
 </body>

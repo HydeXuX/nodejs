@@ -9,17 +9,57 @@ express()
     .get('/', (req, res) => res.render('pages/index'))
     .get('/math', (req, res) => {
         var result
-        var num1 = Number(req.query.num1)
-        var num2 = Number(req.query.num2)
-        if (req.query.type == 1) {
-            result = num1 + num2
-        } else if (req.query.type == 2) {
-            result = num1 - num2
-        } else if (req.query.type == 3) {
-            result = num1 * num2
-        } else if (req.query.type == 4) {
-            result = num1 / num2
+        var weight = Number(req.query.weight)
+        var type = req.query.mail;
+        var mail
+        if (type == 0) {
+            mail = 'Letters (Stamped)'
+            if (weight > 0 && weight <= 1) {
+                result = 0.55
+            }
+            else if (weight > 1 && weight <= 2) {
+                result = 0.7
+            }
+            else if (weight > 2 && weight <= 3) {
+                result = 0.85
+            }
+            else if (weight > 3 && weight <= 3.5) {
+                result = 1
+            }
+        } else if (type == 1) {
+            mail = 'Letters (Metered)'
+            if (weight > 0 && weight <= 1) {
+                result = 0.5
+            }
+            else if (weight > 1 && weight <= 2) {
+                result = 0.65
+            }
+            else if (weight > 2 && weight <= 3) {
+                result = 0.8
+            }
+            else if (weight > 3 && weight <= 3.5) {
+                result = 0.95
+            }
+        } else if (type == 2) {
+            mail = 'Large Envelopes (Flats)'
+            var notover = weight - 1
+            result = notover * 0.2 + 1
+        } else if (type == 3) {
+            mail = 'First-Class Package Service—Retail'
+            if (weight > 0 && weight <= 4) {
+                result = 3.8
+            }
+            else if (weight > 4 && weight <= 8) {
+                result = 4.6
+            }
+            else if (weight > 8 && weight <= 12) {
+                result = 5.3
+            }
+            else if (weight > 12 && weight <= 13) {
+                result = 5.9
+            }
         }
-        res.send(200, result)
+        var data = { mail: mail, result: result, weight: weight }
+        res.render('result', data)
     })
-    .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+    .listen(PORT, () => console.log(`Listening on ${PORT}`))
