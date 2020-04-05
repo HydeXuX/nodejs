@@ -1,0 +1,153 @@
+body{
+    background-color: black;
+    color: white;
+    margin: auto;
+    max-width: 100%;
+}
+h1{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+ul nav
+{
+    display: flex;
+    font-size: 1.2em;
+    line-height: 3em;
+    list-style-type: none;
+
+}
+nav a {
+    color: red;
+    text-align: center;
+    font-family:  Impact, Charcoal, sans-serif;
+    font-size: 35px;
+}
+li{
+    display: inline-block;  
+}
+nav{
+    background-color: lightgrey;
+}
+
+    .logo{
+        display: block;
+        padding-left: 30px;
+}
+    .logo img{
+        width: 180px;
+    }
+    .iconcommon
+    {
+    display: flex;
+        
+    }
+    .fb
+    {
+    margin-left: 45%;
+    }
+    .tw{
+    margin-right: 30px;
+        margin-left: 30px;
+    }
+.yt{
+    margin-right: 45%;
+}
+footer{
+    text-align: center;
+    width:100%;
+}
+.display{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+}
+.display input{
+    height: 25px;
+}
+#items{
+    color: black;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-color: aliceblue;
+    padding: 30px;
+    border-right: 10px solid black;
+    border-left: 20px solid black;
+}
+#pic1,#pic2,#pic3,#pic4{
+    display: flex;
+}
+#blue,#dark,#lube,#lube2{
+    
+    margin-top: 80px;
+    width: 80px;
+    height: 80px;
+}
+#darkbike{
+    width: 385px;
+    height: 240px;
+}
+#lubepic{
+    width: 200px;
+}
+#lubepic2{
+    width: 200px;
+}
+#info{
+    color: black;
+    background-color: aliceblue;
+    padding: 30px;
+    border-right: 30px solid black;
+}
+#pic2{
+    margin-top: 50px;
+}
+.price1,.price2,.price3,.price4{
+    text-align: right;
+    font-size: 40px;    
+    margin: 0;
+    color: darkorange;
+    width: 100%;
+    
+}
+#name1,#name2,#name3,#name4{
+    width: 50%;
+    margin-left: 20px;
+    font-size: 25px;
+}
+#submit{
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 20px 10px 40px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 200px ;
+    margin-right: 50px;
+}
+
+#total{
+    text-align: right;
+    padding: 20px;
+    font-size: 30px;
+    color: red;
+}
+#err{
+    font-size: 20px;
+    color: red;
+}
+.err{
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+.reset{
+    background-color: white;
+    border: none;
+    color: grey;
+    text-align: right;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 200px;
+}
+#buttons{
+    display: flex;
+}

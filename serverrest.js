@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-var restController = require('../restController');
+var restController = require('/restController');
 
 var bodyParser = require('body-parser')
 app.use(bodyParser.json());       // to support JSON-encoded bodies
@@ -9,6 +9,10 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
    extended: true
 }));
 
+app.post('/login', handleLogin);
+app.post('/logout', handleLogout);
+app.use(logRequest);
+app.get('/getServerTime', verifyLogin, getServerTime);
 
 app.set('port', (process.env.PORT || 5000));
 

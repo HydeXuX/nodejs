@@ -1,5 +1,4 @@
 const { Pool } = require('pg')
-const pool = new Pool({ connectionString: connectionString })
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000

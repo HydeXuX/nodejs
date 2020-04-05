@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="css/homepage.css">
+<script>
+    var items = [false, false, false, false, false, false, false, false, false, false];
+    var good = false;
+    var pay = [0, 0, 0, 0];
+    var keyword = ["name", "name", "address", "city", "state", "card number", "expiration date", "expiration date", "cart", "phone"];
+    function fun() {
+        for (var i = 0; i < items.length; i++) {
+            console.log(items[i]);
+            if (items[i] == true) {
+                good = true;
+            }
+            else {
+                good = false;
+            }
+        }
+        if (good == true) {
+            console.log("good");
+        }
+        else {
+            console.log("bad");
+        }
+    }
+
+    function userName(theName, theNum) {
+        if (theNum == 1) {
+            if (theName.match(/\w+/)) {
+                items[0] = true;
+            }
+            else {
+                items[0] = false;
+            }
+        }
+        else if (theNum == 2) {
+            if (theName.match(/\w+/)) {
+                items[1] = true;
+            }
+            else {
+                items[1] = false;
+            }
+        }
+        console.log(items[0], items[1]);
+    }
+
+    function addressTest(theAdd, theNum) {
+        if (theNum == 1) {
+            if (theAdd.match(/\w+/)) {
+                items[2] = true;
+            }
+            else {
+                items[2] = false;
+            }
+        }
+        else if (theNum == 2) {
+            if (theAdd.match(/\w+/)) {
+                items[3] = true;
+            }
+            else {
+                items[3] = false;
+            }
+        }
+        else if (theNum == 3) {
+            if (theAdd.match(/\w+/)) {
+                items[4] = true;
+            }
+            else {
+                items[4] = false;
+            }
+        }
+        console.log(items[2], items[3], items[4]);
+
+    }
+    function cardTest(theCard) {
+        var y = theCard;
+        var x2 = y.replace(/\s/g, "");
+        console.log(x2);
+        if (x2.match(/\d{16}/)) {
+            items[5] = true;
+        }
+        else {
+            items[5] = false;
+        }
+        console.log(items[5]);
+    }
+
+    function phoneTest(thePhone) {
+        var p = thePhone;
+        if (p.match(/\d{10}/)) {
+            items[9] = true;
+        }
+        else {
+            items[9] = false
+        }
+    }
+
+    function expTest(theDate, theNumber) {
+        var d = theDate;
+        var month;
+        var year;
+        if (theNumber == 1) {
+            month = d.match(/\d+/);
+            if (month[0] >= 1 && month[0] <= 12) {
+                items[6] = true;
+            }
+            else {
+                items[6] = false;
+            }
+        }
+        else if (theNumber == 2) {
+            year = d.match(/\d{4}/);
+            if (year == null) {
+                items[7] = false;
+                //console.log(items[6],items[7]);
+            }
+            //console.log("1", year);
+            if (year[0] >= 1753 && year[0] <= 2100) {
+                items[7] = true;
+                console.log("2");
+            }
+            else {
+                items[7] = false;
+            }
+        }
+        console.log(items[6], items[7]);
+    }
+
+    function total(amount, theNum) {
+        if (theNum == 1) {
+            console.log("1");
+            if (document.getElementById("blue").checked == true) {
+                console.log("2");
+                pay[0] = amount;
+                items[8] = true;
+            }
+            if (document.getElementById("blue").checked == false) {
+                pay[0] = 0;
+                items[8] = false;
+            }
+        }
+        if (theNum == 2) {
+            console.log("2");
+            if (document.getElementById("dark").checked == true) {
+                console.log("2");
+                pay[1] = amount;
+                items[8] = true;
+            }
+            if (document.getElementById("dark").checked == false) {
+                pay[1] = 0;
+                items[8] = false;
+            }
+        }
+        if (theNum == 3) {
+            console.log("3");
+            if (document.getElementById("lube").checked == true) {
+                console.log("3");
+                pay[2] = 10;
+                items[8] = true;
+            }
+            if (document.getElementById("lube").checked == false) {
+                pay[2] = 0;
+                items[8] = false;
+            }
+        }
+        if (theNum == 4) {
+            console.log("4");
+            if (document.getElementById("lube2").checked == true) {
+                console.log("2");
+                pay[3] = 20;
+                items[8] = true;
+            }
+            if (document.getElementById("lube2").checked == false) {
+                pay[3] = 0;
+                items[8] = false;
+            }
+        }
+        console.log(pay[0], pay[1], pay[2], pay[3]);
+    }
+
+    function display() {
+        var amount = 0;
+        for (var i = 0; i < pay.length; i++) {
+            amount = amount + pay[i];
+            console.log(amount);
+        }
+        if (document.getElementById("amount").innerHTML = amount) {
+            console.log(1212121);
+        }
+    }
+
+    function update() {
+        for (var i = 0; i < items.length; i++) {
+            console.log(items[i] + "  ");
+            if (items[i] == false) {
+                console.log(items[i] + "  ");
+                document.getElementById("err").innerHTML = "Invaild " + keyword[i];
+                break;
+            }
+            else {
+                document.getElementById("err").innerHTML = "You are at set and ready to submit!";
+            }
+        }
+    }
+
+    function reset() {
+        document.getElementById("1").value = "";
+        document.getElementById("2").value = "";
+        document.getElementById("3").value = "";
+        document.getElementById("4").value = "";
+        document.getElementById("5").value = "";
+        document.getElementById("6").value = "";
+        document.getElementById("7").value = "";
+        document.getElementById("8").value = "";
+        document.getElementById("dark").checked = false;
+        document.getElementById("blue").checked = false;
+        document.getElementById("amount").innerHTML = 0;
+    }
+</script>>
+<style>
+    body {
+        background-color: black;
+        color: white;
+        margin: auto;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+
+    ul nav {
+        display: flex;
+        font-size: 1.2em;
+        line-height: 3em;
+        list-style-type: none;
+
+    }
+
+    nav a {
+        color: red;
+        text-align: center;
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 35px;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    nav {
+        background-color: lightgrey;
+    }
+
+    .logo {
+        display: block;
+        padding-left: 30px;
+    }
+
+    .logo img {
+        width: 180px;
+    }
+
+    .iconcommon {
+        display: flex;
+
+    }
+
+    .fb {
+        margin-left: 45%;
+    }
+
+    .tw {
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+
+    .yt {
+        margin-right: 45%;
+    }
+
+    footer {
+        text-align: center;
+        width: 100%;
+    }
+
+    .display {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+    }
+
+    .display input {
+        height: 25px;
+    }
+
+    #items {
+        color: black;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        background-color: aliceblue;
+        padding: 30px;
+        border-right: 10px solid black;
+        border-left: 20px solid black;
+    }
+
+    #pic1,
+    #pic2,
+    #pic3,
+    #pic4 {
+        display: flex;
+    }
+
+    #blue,
+    #dark,
+    #lube,
+    #lube2 {
+
+        margin-top: 80px;
+        width: 80px;
+        height: 80px;
+    }
+
+    #darkbike {
+        width: 385px;
+        height: 240px;
+    }
+
+    #lubepic {
+        width: 200px;
+    }
+
+    #lubepic2 {
+        width: 200px;
+    }
+
+    #info {
+        color: black;
+        background-color: aliceblue;
+        padding: 30px;
+        border-right: 30px solid black;
+    }
+
+    #pic2 {
+        margin-top: 50px;
+    }
+
+    .price1,
+    .price2,
+    .price3,
+    .price4 {
+        text-align: right;
+        font-size: 40px;
+        margin: 0;
+        color: darkorange;
+        width: 100%;
+
+    }
+
+    #name1,
+    #name2,
+    #name3,
+    #name4 {
+        width: 50%;
+        margin-left: 20px;
+        font-size: 25px;
+    }
+
+    #submit {
+        background-color: orange;
+        border: none;
+        color: white;
+        padding: 20px 10px 40px;
+        text-align: center;
+        font-size: 20px;
+        cursor: pointer;
+        margin-top: 200px;
+        margin-right: 50px;
+    }
+
+    #total {
+        text-align: right;
+        padding: 20px;
+        font-size: 30px;
+        color: red;
+    }
+
+    #err {
+        font-size: 20px;
+        color: red;
+    }
+
+    .err {
+        margin-top: 50px;
+        margin-bottom: 0;
+    }
+
+    .reset {
+        background-color: white;
+        border: none;
+        color: grey;
+        text-align: right;
+        font-size: 17px;
+        cursor: pointer;
+        margin-top: 200px;
+    }
+
+    #buttons {
+        display: flex;
+    }
+</style>
+<title>Frek bicycles</title>
+
+<body>
+    <form action="/submit" method="GET">
+        <div class="display">
+            <div id="items">
+                <h1>Please check the items you wish to buy</h1>
+                <hr />
+
+                <div id="pic1">
+
+                    <input id="blue" type="checkbox" name="1st_item" onclick="total(400,1),display(),update()">
+                    <img id="bluebike" src="https://static.canyon.com/img/cache/a7/7/5362df1682f691714d7ea29e99aaa.jpg"
+                        alt="cf 9.0">
+
+                    <p id="name1">Blue mountain bike </p>
+                    <p class="price1">$400</p>
+                </div>
+                <hr />
+                <div id="pic2">
+                    <br />
+                    <input id="dark" type="checkbox" name="2nd_item" onclick="total(300,2), display(),update()">
+                    <img id="darkbike" src="https://static.canyon.com/img/cache/d7/e/6b55557cc3f49faebc0bab04faa99.jpg"
+                        alt="cf 7.0">
+                    <p id="name2">Black mountain bike </p>
+                    <p class="price2">$300</p>
+                </div>
+                <hr />
+                <div id="pic3">
+                    <br />
+                    <input id="lube" type="checkbox" name="3rd_item" onclick="total(10,3), display(),update()">
+                    <img id="lubepic" src="https://s7d2.scene7.com/is/image/academy/10061191?$m-pdp-product-image$"
+                        alt="cf 8.0">
+                    <p id="name3">Bike chain lube </p>
+                    <p class="price3">$10</p>
+                </div>
+                <hr />
+                <div id="pic4">
+                    <br />
+                    <input id="lube2" type="checkbox" name="4th_item" onclick="total(20,4), display(),update()">
+                    <img id="lubepic2" src="https://images-na.ssl-images-amazon.com/images/I/41PRtfwPOSL._SX342_.jpg"
+                        alt="cf 6.0">
+                    <p id="name4">Adavanced Bike chain lube </p>
+                    <p class="price4">$20</p>
+                </div>
+                <hr />
+                <div id="total">
+                    <span>Total amount : $</span>
+                    <span id="amount">0</span>
+                </div>
+            </div>
+
+            <div id="info">
+                <h2>Your personal information</h2>
+                <input size="10" id="1" name="first_name" placeholder="First name"
+                    onchange="userName(this.value,1),update()">
+                <input size="10" id="2" name="second_name" placeholder="Last name"
+                    onchange="userName(this.value,2),update()">
+                <br /> <br />
+                <input size="25" id="3" name="address" placeholder="Address"
+                    onchange="addressTest(this.value,1),update()">
+                <br /> <br />
+                <input size="10" id="4" name="city" placeholder="City" onchange="addressTest(this.value,2),update()">
+                <input size="10" id="5" name="state" placeholder="State" onchange="addressTest(this.value,3),update()">
+
+                <input size="10" id="9" name="phone" placeholder="Phone number"
+                    onchange="phoneTest(this.value),update()">
+                <br />
+                <hr />
+                <h2>Your payment information</h2>
+                <input size="20" id="6" name="card" placeholder="Credit Card #"
+                    onchange="cardTest(this.value),update()">
+                <p>Expiration date</p>
+                <input size="2" id="7" name="month" placeholder="Month" onchange="expTest(this.value,1),update()">
+                <input size="4" id="8" name="year" placeholder="Year" onchange="expTest(this.value,2),update()">
+                <br />
+                <div class="err">
+                    <span id="err"></span>
+                </div>
+                <div id="buttons">
+                    <input type="submit" id="submit" name="validate" onclick="fun(),update()"
+                        value="Submit your payment" />
+                    <button class="reset" type="button" id="reset" name="reset" onclick="reset()">Reset</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+    <footer>
+        <p>&copy; 2015 Frek Bikes || Hyde Xu<p>
+                <div class="iconcommon">
+                    <div class="fb"><a href="https://www.facebook.com" target="_blank"><img
+                                src="https://byui-cit.github.io/wdd100/images/icons/color/facebook.png"
+                                alt="facebook"></a>
+                    </div>
+                    <div class="tw">
+                        <a href="https://www.twitter.com" target="_blank"><img
+                                src="https://byui-cit.github.io/wdd100/images/icons/color/twitter.png"
+                                alt="twitter"></a>
+                    </div>
+                    <div class="yt">
+                        <a href="https://www.youtube.com" target="_blank"><img
+                                src="https://byui-cit.github.io/wdd100/images/icons/color/youtube.png"
+                                alt="youtube"></a>
+                    </div>
+                </div>
+    </footer>
+
+
+
+
+
+</body>
+
+</html>

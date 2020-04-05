@@ -4,9 +4,7 @@ const fs = require('fs')
 
 var express = require('express');
 var app = express();
-//app.use(express.static(__dirname + '/public'));
-
-app.use('css', express.static('css'));
+app.use(express.static(__dirname + '/public'));
 
 const server = http.createServer(function (req, res) {
   res.writeHead(200, { 'Content-Type': 'text/html' })
